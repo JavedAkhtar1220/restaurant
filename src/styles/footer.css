@@ -1,0 +1,19 @@
+.footer {
+    height: auto;
+    background-color: #525659;
+}
+
+:focus {
+    outline: none !important;
+}
+
+.footer_head {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.social_icon {
+    color: white;
+}

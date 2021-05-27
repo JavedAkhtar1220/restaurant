@@ -1,0 +1,98 @@
+.main_container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('../images/cover.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.cover_head {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+/* Input Enter address Css  */
+
+:focus {
+    outline: none;
+}
+
+.inp_delivery {
+    width: 100%;
+    border: 0;
+    padding: 20px 40px 20px 50px;
+    border-bottom: 1px solid #929fba;
+}
+
+.inp_delivery~.border_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+}
+
+.inp_delivery:focus~.border_bottom {
+    width: 100%;
+    transition: 0.5s;
+}
+
+.border_bottom {
+    border: 1px solid #000 !important;
+}
+
+.delivery_icon {
+    position: absolute;
+    top: 25%;
+    left: 2%;
+    font-size: 30px !important;
+}
+
+.gps_icon {
+    position: absolute;
+    top: 30%;
+    right: 2%;
+    font-size: 25px !important;
+}
+
+/* Select Css  */
+
+.btn_select {
+    background-color: white;
+    outline: none !important;
+    width: 100%;
+    border: 0;
+    padding: 20px 0px 20px 0px;
+}
+
+.dropdown_menu {
+    position: absolute;
+    top: 110%;
+    width: 120%;
+    height: auto;
+    background-color: white;
+}
+
+.dropdown_option {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn_findfood {
+    padding: 20px !important;
+    outline: none !important;
+    border:none;
+    background-color: black;
+    color: white;
+}
+
+.btn_findfood:hover {
+    background-color: rgb(36, 35, 35);
+}
