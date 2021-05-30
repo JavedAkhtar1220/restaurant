@@ -6,6 +6,10 @@ import Signup from './containers/Signup';
 import ResetPassword from './containers/ResetPassword';
 import Profile from './containers/Profile';
 import Cart from './containers/Cart';
+import Payment from './containers/Payment';
+import Chat from './containers/Chat';
+import Restaurants from './containers/Restaurants';
+import Order from './containers/Order';
 
 const App = () => {
   return (
@@ -17,6 +21,10 @@ const App = () => {
         <Route exact component={ResetPassword} path='/resetpassword' />
         <Route exact component={Profile} path='/profile' />
         <Route exact component={Cart} path='/cart' />
+        <Route exact component={Payment} path='/payment' />
+        <Route exact component={Chat} path='/chat' />
+        <Route exact component={Restaurants} path='/restaurants' />
+        <Route exact component={Order} path='/orders' />
       </Switch>
     </Router>
   )

@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-bootstrap/Modal'
 import Header from '../components/Header';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import CloseIcon from '@material-ui/icons/Close';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import items from './items';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import '../styles/cart.css';
+
 const Cart = () => {
 
     const [arr, setArr] = useState([]);
     const [total, setTotal] = useState(0);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         var total_price = 0;
@@ -58,78 +65,310 @@ const Cart = () => {
     return (
         <div>
             <Header />
-            <div style={{ overflowX: 'hidden' }}>
-                <div className="row mt-5 mb-5">
-                    <div className="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
-                        <div className="row">
-                            <div className="col-10 mx-auto mt-5">
-                                <h1 className="auth_head mt-4">Your <span style={{ color: "#37a000" }}>Cart</span></h1>
-                                <div className="mt-5 main_cart_container">
-                                    {arr.map((v, i) => {
-                                        // { total_price += parseInt(v.price) }
-                                        return <div key={i}>
-                                            <div className="row h-100 cart_container">
-                                                <div className="col-lg-7 col-md-12 col-sm-12 col-12 mb-2">
-                                                    <div className="row h-100 mb-5">
-                                                        <div className="col-4 d-flex justify-content-center align-items-center">
-                                                            <div>
-                                                                <IconButton aria-label="favorite" onClick={() => fav(i)}>
-                                                                    {v.fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                                                                </IconButton>
-                                                                <IconButton aria-label="delete">
-                                                                    <CloseIcon />
-                                                                </IconButton>
-                                                            </div>
-                                                        </div>
-                                                        <div className='col-8 d-flex align-items-center'>
-                                                            <img src={v.img} alt={v.name} className="item_img " />
-                                                            <div className="ml-3">
-                                                                <p className="item_name">{v.name}</p>
-                                                                <p className="item_detail">{v.detail}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-5 col-md-12 col-sm-12 col-12">
-                                                    <div className="row h-100">
-                                                        <div className="col d-flex justify-content-center align-items-center">
-                                                            <div className="d-flex text-center">
-                                                                <Button className="btn_quantity" onClick={() => decQuantity(i)}>-</Button>
-                                                                <p className='quantity'>{v.quantity}</p>
-                                                                <Button className="btn_quantity" onClick={() => incQuantity(i)}>+</Button>
-                                                                {/* <button className="btn_quantity" onClick={() => decreament(i)}>-</button>
-                                                                <p className="mb-0 quantity">{v.quantity}</p>
-                                                                <button className="btn_quantity" onClick={() => increament(i)}>+</button> */}
-                                                            </div>
-                                                        </div>
-                                                        <div className='col d-flex justify-content-center align-items-center'>
-                                                            <div className="text-center">
-                                                                <p className="mb-0">Rs. {v.price}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <Divider />
+            <div style={{ marginTop: "150px" }}>
+                <h1 className="auth_head mt-4">New<span style={{ color: "#37a000" }}>Co</span></h1>
+            </div>
+            <div className="container mt-5">
+                <div className="row">
+                    <div className='col-lg-8 col-md-12 col-sm-12 col-12 mb-lg-0 mb-md-3 mb-sm-3 mb-3 px-2'>
+                        <hr />
+                        {arr.map((v, i) => {
+                            return <div className="row py-3" key={i}>
+                                <div className="col-6">
+                                    <div className="row">
+                                        <div className="col-6 pb-2">
+                                            <img src={v.img} alt={v.name} className="item_img img-fluid" />
                                         </div>
-                                    })}
-                                    <div className="container mt-4">
-                                        <div className="d-flex justify-content-between">
-                                            <div>
-                                                <p>Total</p>
-                                            </div>
-                                            <div>
-                                                <p>Rs. {total}</p>
-                                            </div>
+                                        <div className="col-6 pl-2">
+                                            <p className="item_name">{v.name}</p>
+                                            <p className="item_detail">{v.detail}</p>
+                                            <button className="btn_change small" onClick={handleShow}>Change</button>
                                         </div>
                                     </div>
                                 </div>
+                                <div className="col-2">
+                                    <p className="mb-0">${v.price}</p>
+                                </div>
+                                <div className="col-4" style={{ position: 'relative' }}>
+                                    <div className="d-flex">
+                                        <button className="btn_quantity" onClick={() => decQuantity(i)}>-</button>
+                                        <p className='quantity'>{v.quantity}</p>
+                                        <button className="btn_quantity" onClick={() => incQuantity(i)}>+</button>
+                                    </div>
+                                    <div className="m-auto" style={{ position: 'absolute', right: "20%", bottom: 0 }}>
+                                        <IconButton aria-label="favorite" onClick={() => fav(i)}>
+                                            {v.fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                                        </IconButton>
+                                        <IconButton aria-label="delete">
+                                            <CloseIcon />
+                                        </IconButton>
+                                    </div>
+                                </div>
+                                <hr />
                             </div>
+                        })}
+                    </div>
+                    <div className='col-lg-4 col-md-12 col-sm-12 col-12 summary_cart'>
+                        <div>
+                            <h1 className="small text-center">13 Items in your Bag</h1>
+                        </div>
+                        <hr />
+                        <div className="summary_subtotal">
+                            <div className="d-flex justify-content-between">
+                                <div>
+                                    Subtotal
+                                </div>
+                                <div>
+                                    ${total}
+                                </div>
+                            </div>
+                            <div className="mt-3 d-flex justify-content-between">
+                                <div>
+                                    Shipping Fee
+                                </div>
+                                <div>
+                                    $0
+                                </div>
+                            </div>
+                            <div className="mt-3 d-flex justify-content-between">
+                                <div>
+                                    Sales Tax
+                                </div>
+                                <div>
+                                    $0
+                                </div>
+                            </div>
+                            <div className="mt-3 d-flex justify-content-between">
+                                <div>
+                                    Tips
+                                </div>
+                                <div>
+                                    $0
+                                </div>
+                            </div>
+                            <div className="mt-3 d-flex justify-content-between">
+                                <div>
+                                    Others
+                                </div>
+                                <div>
+                                    $0
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="d-flex justify-content-between">
+                            <div className="subtotal_title">
+                                Total
+                                </div>
+                            <div>
+                                ${total}
+                            </div>
+                        </div>
+                        <div className="mt-3">
+                            <Button variant="contained" color="primary" className="w-100">
+                                Go to Secure checkout
+                            </Button>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
+            {/* Modal */}
+            <Modal show={show} onHide={handleClose} centered className="modal_container">
+                <Modal.Body>
+                    <p className="mb-2 small font-weight-bold">Burger/Sandwich Premium Add Ons</p>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Add American Cheese"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Add Avocado"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Add Bacon"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Add Portabella Mushroom"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Add White American"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Restaurant 4"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+
+                    <p className="mb-2 small font-weight-bold">Removeable</p>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    // checked={state.checkedB}
+                                    // onChange={handleChange}
+                                    name="checkedB"
+                                    color="primary"
+                                />
+                            }
+                            label="Easy Cucumber"
+                        />
+                    </div>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    // checked={state.checkedB}
+                                    // onChange={handleChange}
+                                    name="checkedB"
+                                    color="primary"
+                                />
+                            }
+                            label="Extra Cucumber"
+                        />
+                    </div>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    // checked={state.checkedB}
+                                    // onChange={handleChange}
+                                    name="checkedB"
+                                    color="primary"
+                                />
+                            }
+                            label="No Cucumber"
+                        />
+                    </div>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    // checked={state.checkedB}
+                                    // onChange={handleChange}
+                                    name="checkedB"
+                                    color="primary"
+                                />
+                            }
+                            label="Easy Lettuce"
+                        />
+                    </div>
+
+                    <div className="d-flex justify-content-between">
+                        <div>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        // checked={state.checkedB}
+                                        // onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="Restaurant 4"
+                            />
+                        </div>
+                        <div>
+                            <p className="">+$0.55</p>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </div >
     )
 }
 

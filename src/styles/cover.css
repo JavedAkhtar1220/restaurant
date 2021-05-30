@@ -88,11 +88,23 @@
 .btn_findfood {
     padding: 20px !important;
     outline: none !important;
-    border:none;
+    border: none;
     background-color: black;
     color: white;
 }
 
 .btn_findfood:hover {
     background-color: rgb(36, 35, 35);
+}
+
+@media screen and (max-width: 768px) {
+    .cover_head {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .cover_head {
+        font-size: 24px;
+    }
 }

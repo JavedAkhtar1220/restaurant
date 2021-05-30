@@ -1,0 +1,39 @@
+.payment_head {
+    font-size: 40px;
+    color: #525252;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.billing_head {
+    font-size: 24px;
+    color: #525252;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.inp_payment {
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.payment_type {
+    line-height: 50px;
+    padding: 0px 40px;
+    margin: 0%;
+    background-color: #ccc;
+}
+
+.payment_cart {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+}
+
+.payment_item_name {
+    font: 20px;
+    font-weight: 600;
+}

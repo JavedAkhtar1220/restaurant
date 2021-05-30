@@ -1,5 +1,6 @@
 import React from 'react';
 import img from '../images/profile/profile.jpg';
+import Header from '../components/Header';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -21,9 +22,10 @@ import '../styles/profile.css';
 const Profile = () => {
     return (
         <div style={{ overflowX: 'hidden' }}>
+            <Header />
             <div className="row mt-5 mb-5">
                 <div className="col-lg-8 col-md-8 col-sm-10 col-10 mx-auto">
-                    <div className="row">
+                    <div className="row mt-5">
                         <div className="col-lg-6 col-md-8 col-sm-10 mx-auto">
                             <h1 className="profile_head mt-4 mb-5">My Profile</h1>
                             <div style={{ textAlign: '-webkit-center' }}>
@@ -57,8 +59,8 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-5">
-                    <div className="row">
+                {/* <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-5">
+                    <div className="row mt-5">
                         <div className="col-10 m-auto">
                             <List style={{ backgroundColor: "#f7f7f7" }}>
                                 <ListItem button >
@@ -93,45 +95,7 @@ const Profile = () => {
                             </List>
                         </div>
                     </div>
-                    {/* <List className="bg-info">
-                        <ListItem button >
-                            <ListItemIcon><HomeIcon /></ListItemIcon>
-                            <ListItemText primary="HOME" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><MenuBookIcon /></ListItemIcon>
-                            <ListItemText primary="CUISINES" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><SearchIcon /></ListItemIcon>
-                            <ListItemText primary="SEARCH" />
-                        </ListItem>
-                        <ListItem button >
-                            <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
-                            <ListItemText primary="CART" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><PermIdentityIcon /></ListItemIcon>
-                            <ListItemText primary="PROFILE" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><LocalShippingIcon /></ListItemIcon>
-                            <ListItemText primary="ORDERS" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><PersonAddIcon /></ListItemIcon>
-                            <ListItemText primary="SIGNUP" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><InputIcon /></ListItemIcon>
-                            <ListItemText primary="LOGIN" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon><ExitToAppIcon /></ListItemIcon>
-                            <ListItemText primary="LOGOUT" />
-                        </ListItem>
-                    </List> */}
-                </div>
+                </div> */}
             </div>
         </div >)
 }

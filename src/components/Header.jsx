@@ -25,6 +25,12 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CloseIcon from '@material-ui/icons/Close';
 import InputIcon from '@material-ui/icons/Input';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import HelpOutlineSharpIcon from '@material-ui/icons/HelpOutlineSharp';
+import SettingsIcon from '@material-ui/icons/Settings';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import '../styles/header.css';
 import '../App.css';
 
@@ -46,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         boxShadow: 'none',
+        zIndex: 1,
     },
     drawerHeader: {
         display: 'flex',
@@ -76,10 +83,10 @@ export default function Header() {
         setState(open);
     };
 
-    const list = (left) => (
+    const list = (right) => (
         <div
             className={clsx(classes.list, {
-                [classes.fullList]: left === 'top' || left === 'bottom',
+                [classes.fullList]: right === 'top' || right === 'bottom',
             })}
             role="presentation"
             onClick={toggleDrawer(false)}
@@ -128,6 +135,35 @@ export default function Header() {
                     <ListItemIcon><ExitToAppIcon /></ListItemIcon>
                     <ListItemText primary="LOGOUT" />
                 </ListItem>
+                <ListItem button >
+                    <ListItemIcon><ReceiptIcon /></ListItemIcon>
+                    <ListItemText primary="Your Orders" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon><MenuBookIcon /></ListItemIcon>
+                    <ListItemText primary="Credits, promos & gift cards" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon><HelpOutlineSharpIcon /></ListItemIcon>
+                    <ListItemText primary="Help" />
+                </ListItem>
+                <Divider />
+                <ListItem button >
+                    <ListItemIcon><SettingsIcon /></ListItemIcon>
+                    <ListItemText primary="Your account settings" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon><LocationOnIcon /></ListItemIcon>
+                    <ListItemText primary="Addresses" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon><CreditCardIcon /></ListItemIcon>
+                    <ListItemText primary="Payment methods" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon><NotificationsIcon /></ListItemIcon>
+                    <ListItemText primary="Notifications" />
+                </ListItem>
             </List>
         </div>
     );
@@ -161,39 +197,17 @@ export default function Header() {
         }
     })
 
-    // window.addEventListener('scroll', () => {
-    //     if (window.scrollY > 100) {
-    //         setNavColor('#90caf9');
-    //     }
-    //     else {
-    //         setNavColor('transparent');
-    //     }
-    // })
-
-
     return (
         <div>
             <React.Fragment>
-
                 <AppBar
                     position="fixed"
                     className={classes.appBar}
-                // style={{ backgroundColor: navColor }}
                 >
                     <div className='promotion'>
                         <marquee behavior="" direction="right" className="small">50% sell on everythings grap it now</marquee>
                     </div>
                     <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer(true)}
-                            edge="start"
-                            className={clsx(classes.menuButton, open)}
-                        >
-
-                            <MenuIcon />
-                        </IconButton>
                         <Typography variant="h6" noWrap>
                             NewCo
                         </Typography>
@@ -232,12 +246,22 @@ export default function Header() {
                             >
                                 Login
                             </Button>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={toggleDrawer(true)}
+                                edge="start"
+                                className={clsx(classes.menuButton, open)}
+                            >
+
+                                <MenuIcon />
+                            </IconButton>
                         </div> : null}
 
                     </Toolbar>
                 </AppBar>
-                <Drawer anchor='left' open={state} onClose={toggleDrawer(false)}>
-                    {list('left')}
+                <Drawer anchor='right' open={state} onClose={toggleDrawer(false)}>
+                    {list('right')}
                 </Drawer>
             </React.Fragment>
         </div >

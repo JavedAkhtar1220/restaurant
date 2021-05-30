@@ -22,12 +22,12 @@
 }
 
 .item_img {
-    width: 120px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .btn_quantity {
-    width: 30px !important;
+    width: 50px !important;
     height: 30px !important;
     border: 1px solid #ccc !important;
     outline: none !important;
@@ -38,4 +38,24 @@
     line-height: 30px;
     text-align: center;
     margin-bottom: 0;
+}
+
+.summary_cart {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 1rem;
+    height: 400px;
+}
+
+.btn_change {
+    border: none;
+    outline: none !important;
+    background-color: transparent;
+    color: blue;    
+    width: 20px;
+    padding: 0;
+}
+
+.modal_container {
+    z-index: 10;
 }
